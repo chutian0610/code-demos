@@ -53,5 +53,14 @@ public class Main
 
         // 6. 内部类
         System.out.println(String.format("sizeof(new A.C()):%s", MemorySizeUtil.deepMemoryUsageOf(new A().new C())));
+
+        //7.boolean array
+        System.out.println(String.format("sizeof(new boolean[1]):%s", MemorySizeUtil.memoryUsageOf(new boolean[1])));
+        System.out.println(String.format("sizeof(new boolean[8]):%s", MemorySizeUtil.memoryUsageOf(new boolean[8])));
+        System.out.println(String.format("sizeof(new boolean[15]):%s", MemorySizeUtil.memoryUsageOf(new boolean[15])));
+
+        //8.boolean field
+        System.out.println(String.format("sizeof(new BooleanWrapper()):%s", MemorySizeUtil.memoryUsageOf(new BooleanWrapper())));
+        System.out.println(String.format("sizeof(new BooleanWrapper8()):%s", MemorySizeUtil.memoryUsageOf(new BooleanWrapper8())));
     }
 }
