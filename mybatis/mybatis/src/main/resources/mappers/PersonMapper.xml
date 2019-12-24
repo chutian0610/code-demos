@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="info.victor.mapper.PersonMapper">
+    <resultMap type="info.victor.entity.Person" id="personMap">
+        <id column="id" property="id" javaType="long" jdbcType="BIGINT" />
+        <result column="person_name" property="personName" javaType="string"
+                jdbcType="VARCHAR" />
+        <result column="note" property="note" javaType="string"
+                jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="findById" parameterType="long" resultMap="personMap">
+        select
+        id,person_name,note from person where id=#{id}
+    </select>
+    <select id="findByPersonName" parameterType="long" resultMap="personMap">
+        select
+        id,person_name,note from person where person_name like CONCAT('%',#{personName
+        javaType=string,
+        jdbcType=VARCHAR},'%')
+    </select>
+    <insert id="save" parameterType="info.victor.entity.Person">
+        insert into
+        person(person_name,note) value(#{personName},#{note})
+    </insert>
+    <delete id="deleteById" parameterType="long">
+        delete from person where
+        id=#{id}
+    </delete>
+</mapper>
